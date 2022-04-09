@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
         }
     })
 
-    // TODO: add associate - subjects, classes
     Teacher.associate = (tables) => {
         Teacher.hasMany(tables.classes, {
             onDelete: 'cascade'
