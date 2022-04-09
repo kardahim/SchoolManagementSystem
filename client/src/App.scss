@@ -10,7 +10,7 @@ $footer-background-color: #1D74DE;
 $footer-content-color: #ECECE9;
 $footer-content-height: 45px;
 $footer-padding: 12px;
-$footer-font-size: 18px;
+$footer-font-size: 16px;
 
 
 // main
@@ -62,8 +62,8 @@ footer {
     align-items: center;
 
     a {
-        color: $navigation-content-color;
-        font-size: $navigation-font-size;
+        color: $footer-content-color;
+        font-size: $footer-font-size;
         font-family: Arial, Helvetica, sans-serif;
         text-decoration: none;
         padding: $footer-padding;
@@ -73,7 +73,7 @@ footer {
         }
 
         &:hover {
-            border-bottom: 1px solid $navigation-content-color;
+            border-bottom: 1px solid $footer-content-color;
             border-radius: 1px;
         }
     }
