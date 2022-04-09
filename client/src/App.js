@@ -17,11 +17,16 @@ function App() {
           <Link to="/login">Logowanie</Link>
           <Link to="/register">Rejestracja</Link>
         </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </main>
+        <footer>
+          <Link to="/about">O nas</Link>
+        </footer>
       </Router>
     </div>
   );

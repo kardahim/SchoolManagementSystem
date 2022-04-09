@@ -3,7 +3,9 @@ import './Register.scss'
 
 function Register() {
     return (
-        <div>Register</div>
+        <div>
+            <div>Register</div>
+        </div>
     )
 }
 

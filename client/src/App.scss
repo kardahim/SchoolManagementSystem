@@ -1,9 +1,20 @@
-// navigations
+// navigation
 $navigation-background-color:#1D74DE;
 $navigation-content-height: 70px;
 $navigation-padding: 12px;
 $navigation-content-color: #ECECE9;
 $navigation-font-size: 18px;
+
+// footer
+$footer-background-color: #1D74DE;
+$footer-content-color: #ECECE9;
+$footer-content-height: 45px;
+$footer-padding: 12px;
+$footer-font-size: 18px;
+
+
+// main
+$main-margin: 50px;
 
 * {
     padding: 0;
@@ -26,6 +37,38 @@ nav {
 
         &:first-child {
             font-weight: bold;
+            margin-left: 10%;
+        }
+
+        &:hover {
+            border-bottom: 1px solid $navigation-content-color;
+            border-radius: 1px;
+        }
+    }
+}
+
+main {
+    margin: $main-margin 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(89vh - (#{$navigation-content-height + $footer-content-height}));
+}
+
+footer {
+    background-color: $footer-background-color;
+    height: $footer-content-height;
+    display: flex;
+    align-items: center;
+
+    a {
+        color: $navigation-content-color;
+        font-size: $navigation-font-size;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        padding: $footer-padding;
+
+        &:first-child {
             margin-left: 10%;
         }
 
