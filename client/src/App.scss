@@ -52,7 +52,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(89vh - (#{$navigation-content-height + $footer-content-height}));
+    min-height: calc(91vh - (#{$navigation-content-height + $footer-content-height}));
 }
 
 footer {
