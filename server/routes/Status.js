@@ -1,16 +1,21 @@
 const express = require('express')
 const router = express.Router()
 const { Status } = require('../models')
+const controller = require('../controllers/StatusController')
 
 // add status
-router.post('/', async (req, res) => {
-    const status = req.body
-    await Status.create(status)
-    res.json(status)
-})
+router.post('/', controller.addStatus)
 
-router.get('/', async (req, res) => {
-    res.json("test")
-})
+// get all statuses
+router.get('/', controller.getAllStatuses)
+
+// get status by id
+router.get('/:id', controller.getStatusById)
+
+// update status
+router.put('/:id', controller.updateStatus)
+
+//delete status
+router.delete('/:id', controller.deleteStatus)
 
 module.exports = router
