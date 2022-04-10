@@ -14,7 +14,7 @@ $footer-font-size: 16px;
 
 
 // main
-$main-margin: 50px;
+$main-padding: 50px;
 
 * {
     padding: 0;
@@ -48,14 +48,27 @@ nav {
 }
 
 main {
-    margin: $main-margin 0;
+    padding: $main-padding 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(91vh - (#{$navigation-content-height + $footer-content-height}));
+    min-height: calc(100vh - (#{$navigation-content-height + $footer-content-height}));
+    position: relative;
+    
+    .background {
+        height: 100%;
+        width: 100%;
+        // image from
+        // https://www.anyrgb.com/en-clipart-ya3tz
+        background-image: url('./assets/main-background.png');
+        position: absolute;
+        opacity: 0.2;
+        z-index: -1;
+    }
 }
 
 footer {
+    display: none;
     background-color: $footer-background-color;
     height: $footer-content-height;
     display: flex;

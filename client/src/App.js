@@ -19,6 +19,7 @@ function App() {
           <Link to="#">Empty</Link>
         </nav>
         <main>
+          <div className='background'></div>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
