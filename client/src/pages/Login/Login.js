@@ -21,7 +21,6 @@ function Login() {
         console.log(data)
     }
 
-
     return (
         <div className='login-container'>
             <Formik
@@ -39,7 +38,7 @@ function Login() {
                             <Field
                                 name='email'
                                 className='login-input'
-                                placeholder='Użytkownik' />
+                                placeholder='Email' />
                         </div>
                         <div>
                             <ErrorMessage name='password' component='span' />
@@ -50,7 +49,7 @@ function Login() {
                                 placeholder='Hasło' />
                         </div>
                         <div>
-                            <button type='submit'>Zaloguj się</button>
+                            <button type='submit'>zaloguj się</button>
                         </div>
                     </div>
                 </Form>

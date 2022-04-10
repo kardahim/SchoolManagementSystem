@@ -1,0 +1,93 @@
+// container
+$container-width: 550px;
+$container-height: 600px;
+$container-shadow-color: #ECECE9;
+
+// form
+$form-primary-color: #1D74DE;
+$form-accent-color: #ECECE9;
+$form-header-font-size: 22px;
+$form-header-height: 70px;
+$form-items-padding: 20px;
+
+// inputs
+$input-height: 55px;
+$input-width: 80%;
+$input-contains-padding: 20px;
+
+// icon
+$icon-color: #666564;
+
+// button
+$button-height: 55px;
+$button-width: 80%;
+$button-hover-color: #2E85EF;
+
+.addNewUser-container {
+    width: $container-width;
+    min-height: $container-height;
+    box-shadow: 0px 0px 10px $container-shadow-color;
+    background-color: white;
+
+    .addNewUser-form {
+        .form-header {
+            background-color: $form-primary-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $form-accent-color;
+            font-size: $form-header-font-size;
+            height: $form-header-height;
+            text-transform: uppercase;
+        }
+
+        .form-body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .form-icon-container {
+                font-size: 50px;
+                background-color: $form-accent-color;
+                width: fit-content;
+                margin: calc(2*#{$form-items-padding}) 0 $form-items-padding;
+                border-radius: 15px;
+                color: $icon-color;
+            }
+
+            div {
+                display: flex;
+                flex-direction: column;
+                padding: $form-items-padding;
+                width: 100%;
+                align-items: center;
+
+                input {
+                    height: $input-height;
+                    width: $input-width;
+                    padding-left: $input-contains-padding;
+                }
+
+                span {
+                    color: red;
+                    width: $input-width;
+                }
+
+                button {
+                    border: none;
+                    background-color: $form-primary-color;
+                    color: $form-accent-color;
+                    text-transform: uppercase;
+                    width: $button-width;
+                    height: $button-height;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $button-hover-color;
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    }
+}
