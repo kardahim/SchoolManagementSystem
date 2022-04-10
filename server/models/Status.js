@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Status = sequelize.define("statuses", {
+    const Status = sequelize.define("Status", {
         // TODO: add validate
         name: {
             type: DataTypes.STRING,
@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Status.associate = (tables) => {
-        Status.hasMany(tables.students, {
+        Status.hasMany(tables.Student, {
             onDelete: 'cascade'
         }),
-            Status.hasMany(tables.teachers, {
+            Status.hasMany(tables.Teacher, {
                 onDelete: 'cascade'
             })
     }

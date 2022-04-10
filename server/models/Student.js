@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Student = sequelize.define("students", {
+    const Student = sequelize.define("Student", {
         // TODO: add validate
         first_name: {
             type: DataTypes.STRING,
@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Student.associate = (tables) => {
-        Student.hasMany(tables.grades, {
+        Student.hasMany(tables.Grade, {
             onDelete: 'cascade'
         })
     }

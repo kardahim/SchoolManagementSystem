@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Subject = sequelize.define("subjects", {
+    const Subject = sequelize.define("Subject", {
         // TODO: add validate
         name: {
             type: DataTypes.STRING,
@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Subject.associate = (tables) => {
-        Subject.hasMany(tables.grades, {
+        Subject.hasMany(tables.Grade, {
             onDelete: 'cascade'
         })
     }
