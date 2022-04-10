@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const { Status } = require('../models')
 const controller = require('../controllers/StatusController')
 
 // add status
