@@ -1,6 +1,7 @@
 const { Teacher } = require('../models')
 const bcrypt = require('bcrypt')
 
+// TODO: add try catch statement
 module.exports = {
     // add teacher
     addTeacher: async (req, res) => {
