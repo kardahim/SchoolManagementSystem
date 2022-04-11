@@ -12,6 +12,8 @@ const teacherRouter = require('./routes/Teacher')
 app.use('/teacher', teacherRouter)
 const classRouter = require('./routes/Class')
 app.use('/class', classRouter)
+const studentRouter = require('./routes/Student')
+app.use('/student', studentRouter)
 
 const db = require('./models')
 db.sequelize.sync().then(() => {
