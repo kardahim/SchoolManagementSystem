@@ -1,6 +1,5 @@
 const { Status } = require('../models')
 
-// TODO: add try catch statement
 module.exports = {
     // add status
     addStatus: async (req, res) => {

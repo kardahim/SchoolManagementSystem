@@ -1,6 +1,5 @@
 const { Subject } = require('../models')
 
-// TODO: add try catch statement
 module.exports = {
     // add subject
     addSubject: async (req, res) => {

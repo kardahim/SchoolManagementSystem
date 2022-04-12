@@ -1,6 +1,5 @@
 const { Grade } = require('../models')
 
-// TODO: add try catch statement
 module.exports = {
     // add grade
     addGrade: async (req, res) => {

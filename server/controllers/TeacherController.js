@@ -1,22 +1,21 @@
 const { Teacher } = require('../models')
 const bcrypt = require('bcrypt')
 
-// TODO: add try catch statement
 module.exports = {
     // add teacher
     addTeacher: async (req, res) => {
         const teacher = req.body
-        teacher.isAdmin = false
-        teacher.StatusId = 1
-        try {
+
+        const studentFind = Student.findAll({ where: { email: student.email } })
+        if (studentFind != null) res.json({ error: "Użytkownik o tym emailu już istnieje" })
+        else {
+            teacher.isAdmin = false
+            teacher.StatusId = 1
             bcrypt.hash(teacher.password, 10).then((hash) => {
                 teacher.password = hash
                 Teacher.create(teacher)
             })
             res.json("ADDED")
-        }
-        catch (error) {
-            res.json(error)
         }
     },
 
