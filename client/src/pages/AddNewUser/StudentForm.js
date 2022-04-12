@@ -5,6 +5,7 @@ import axios from 'axios'
 
 function StudentForm() {
     const [classes, setClasses] = useState([])
+    const [emailError, setEmailError] = useState('')
 
     useEffect(() => {
         axios.get('http://localhost:3001/class').then((response) => {
@@ -39,7 +40,9 @@ function StudentForm() {
         axios
             .post('http://localhost:3001/student', data)
             .then((response) => {
-                console.log(response.data)
+                if (response.data.error) {
+                    setEmailError(response.data.error)
+                }
             })
     }
 
@@ -79,6 +82,7 @@ function StudentForm() {
                         </div>
                         <div>
                             <ErrorMessage name='email' component='span' />
+                            <span>{emailError}</span>
                             <Field
                                 name='email'
                                 className='form-input'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
@@ -10,6 +10,7 @@ function TeacherForm() {
         email: '',
         password: ''
     }
+    const [emailError, setEmailError] = useState('')
 
     const validationSchema = Yup.object().shape({
         first_name: Yup.string()
@@ -28,7 +29,9 @@ function TeacherForm() {
         axios
             .post('http://localhost:3001/teacher', data)
             .then((response) => {
-                console.log(response.data)
+                if (response.data.error) {
+                    setEmailError(response.data.error)
+                }
             })
     }
 
@@ -68,6 +71,7 @@ function TeacherForm() {
                         </div>
                         <div>
                             <ErrorMessage name='email' component='span' />
+                            <span>{emailError}</span>
                             <Field
                                 name='email'
                                 className='form-input'
