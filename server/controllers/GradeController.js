@@ -5,8 +5,13 @@ module.exports = {
     // add grade
     addGrade: async (req, res) => {
         const grade = req.body
-        await Grade.create(grade)
-        res.json(grade)
+        try {
+            await Grade.create(grade)
+            res.json(grade)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     // get all grades
@@ -26,14 +31,24 @@ module.exports = {
     updateGrade: async (req, res) => {
         const id = req.params.id
         const newGrade = req.body
-        await Grade.update(newGrade, { where: { id: id } })
-        res.json(newGrade)
+        try {
+            await Grade.update(newGrade, { where: { id: id } })
+            res.json(newGrade)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     //delete grade
     deleteGrade: async (req, res) => {
         const id = req.params.id
-        await Grade.destroy({ where: { id: id } })
-        res.json("DELETED")
+        try {
+            await Grade.destroy({ where: { id: id } })
+            res.json("DELETED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     }
 }

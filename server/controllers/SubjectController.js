@@ -5,8 +5,13 @@ module.exports = {
     // add subject
     addSubject: async (req, res) => {
         const subject = req.body
-        await Subject.create(subject)
-        res.json(subject)
+        try {
+            await Subject.create(subject)
+            res.json(subject)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     // get all subjects
@@ -26,14 +31,24 @@ module.exports = {
     updateSubject: async (req, res) => {
         const id = req.params.id
         const newSubject = req.body
-        await Subject.update(newSubject, { where: { id: id } })
-        res.json(newSubject)
+        try {
+            await Subject.update(newSubject, { where: { id: id } })
+            res.json(newSubject)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     //delete subject
     deleteSubject: async (req, res) => {
         const id = req.params.id
-        await Subject.destroy({ where: { id: id } })
-        res.json("DELETED")
+        try {
+            await Subject.destroy({ where: { id: id } })
+            res.json("DELETED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     }
 }

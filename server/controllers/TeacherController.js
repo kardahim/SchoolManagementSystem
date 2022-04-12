@@ -8,11 +8,16 @@ module.exports = {
         const teacher = req.body
         teacher.isAdmin = false
         teacher.StatusId = 1
-        bcrypt.hash(teacher.password, 10).then((hash) => {
-            teacher.password = hash
-            Teacher.create(teacher)
-        })
-        res.json("ADDED")
+        try {
+            bcrypt.hash(teacher.password, 10).then((hash) => {
+                teacher.password = hash
+                Teacher.create(teacher)
+            })
+            res.json("ADDED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     // get all teachers
@@ -32,15 +37,25 @@ module.exports = {
     updateTeacher: async (req, res) => {
         const id = req.params.id
         const newTeacher = req.body
-        await Teacher.update(newTeacher, { where: { id: id } })
-        res.json(newTeacher)
+        try {
+            await Teacher.update(newTeacher, { where: { id: id } })
+            res.json(newTeacher)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     // delete teacher
     deleteTeacher: async (req, res) => {
         const id = req.params.id
-        await Teacher.destroy({ where: { id: id } })
-        res.json("DELETED")
+        try {
+            await Teacher.destroy({ where: { id: id } })
+            res.json("DELETED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     }
 }
 

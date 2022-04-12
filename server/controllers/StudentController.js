@@ -7,11 +7,16 @@ module.exports = {
     addStudent: async (req, res) => {
         const student = req.body
         student.StatusId = 1
-        bcrypt.hash(student.password, 10).then((hash) => {
-            student.password = hash
-            Student.create(student)
-        })
-        res.json("ADDED")
+        try {
+            bcrypt.hash(student.password, 10).then((hash) => {
+                student.password = hash
+                Student.create(student)
+            })
+            res.json("ADDED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     // get all students
@@ -31,14 +36,24 @@ module.exports = {
     updateStudent: async (req, res) => {
         const id = req.params.id
         const newStudent = req.body
-        await Student.update(newStudent, { where: { id: id } })
-        res.json(newStudent)
+        try {
+            await Student.update(newStudent, { where: { id: id } })
+            res.json(newStudent)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     //delete student
     deleteStudent: async (req, res) => {
         const id = req.params.id
-        await Student.destroy({ where: { id: id } })
-        res.json("DELETED")
+        try {
+            await Student.destroy({ where: { id: id } })
+            res.json("DELETED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     }
 }

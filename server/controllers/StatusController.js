@@ -5,8 +5,13 @@ module.exports = {
     // add status
     addStatus: async (req, res) => {
         const status = req.body
-        await Status.create(status)
-        res.json(status)
+        try {
+            await Status.create(status)
+            res.json(status)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     // get all statuses
@@ -26,14 +31,24 @@ module.exports = {
     updateStatus: async (req, res) => {
         const id = req.params.id
         const newStatus = req.body
-        await Status.update(newStatus, { where: { id: id } })
-        res.json(newStatus)
+        try {
+            await Status.update(newStatus, { where: { id: id } })
+            res.json(newStatus)
+        }
+        catch (error) {
+            res.json(error)
+        }
     },
 
     //delete status
     deleteStatus: async (req, res) => {
         const id = req.params.id
-        await Status.destroy({ where: { id: id } })
-        res.json("DELETED")
+        try {
+            await Status.destroy({ where: { id: id } })
+            res.json("DELETED")
+        }
+        catch (error) {
+            res.json(error)
+        }
     }
 }
