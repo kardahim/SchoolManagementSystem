@@ -32,6 +32,11 @@ function TeacherForm() {
             })
     }
 
+    const changeForm = () => {
+        sessionStorage.setItem('user', 'student')
+        window.location.reload()
+    }
+
     return (
         <div className='addNewUser-container'>
             <Formik
@@ -41,7 +46,7 @@ function TeacherForm() {
                 <Form className='addNewUser-form'>
                     <div className='form-header'>
                         dodawanie - nauczyciela
-                        <i className="fa-solid fa-arrow-right"></i>
+                        <i className="fa-solid fa-arrow-right" onClick={changeForm}></i>
                     </div>
                     <div className='form-body'>
                         <div className='form-icon-container'>
