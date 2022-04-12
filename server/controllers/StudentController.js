@@ -6,6 +6,7 @@ module.exports = {
     // add student
     addStudent: async (req, res) => {
         const student = req.body
+        student.StatusId = 1
         bcrypt.hash(student.password, 10).then((hash) => {
             student.password = hash
             Student.create(student)
