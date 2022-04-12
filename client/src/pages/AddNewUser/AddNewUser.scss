@@ -23,6 +23,10 @@ $button-height: 55px;
 $button-width: 80%;
 $button-hover-color: #2E85EF;
 
+// arrows 
+$arrow-size: 30px;
+$arrow-hover-color: white;
+
 .addNewUser-container {
     width: $container-width;
     min-height: $container-height;
@@ -39,6 +43,33 @@ $button-hover-color: #2E85EF;
             font-size: $form-header-font-size;
             height: $form-header-height;
             text-transform: uppercase;
+            position: relative;
+
+            .fa-arrow-right {
+                position: absolute;
+                right: 10%;
+                font-size: $arrow-size;
+
+                &:hover {
+                    color: $arrow-hover-color;
+                    font-size: calc(#{$arrow-size} + 5px);
+                    transition: 0.2s;
+                    cursor: pointer;
+                }
+            }
+
+            .fa-arrow-left {
+                position: absolute;
+                left: 10%;
+                font-size: $arrow-size;
+
+                &:hover {
+                    color: $arrow-hover-color;
+                    font-size: calc(#{$arrow-size} + 5px);
+                    transition: 0.2s;
+                    cursor: pointer;
+                }
+            }
         }
 
         .form-body {
@@ -62,7 +93,7 @@ $button-hover-color: #2E85EF;
                 width: 100%;
                 align-items: center;
 
-                input {
+                .form-input {
                     height: $input-height;
                     width: $input-width;
                     padding-left: $input-contains-padding;
