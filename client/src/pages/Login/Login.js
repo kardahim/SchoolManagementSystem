@@ -18,7 +18,6 @@ function Login() {
         email: Yup.string().email("To nie jest email").required("To pole jest wymagane"),
         password: Yup.string()
             .required("To pole jest wymagane")
-            .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/, "Musi zawierać 8 znaków, wielką i małą literę, liczbę oraz znak specjalny")
     })
 
     const onSubmit = (data) => {
