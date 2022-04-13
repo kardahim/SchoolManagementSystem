@@ -18,6 +18,8 @@ const subjectRouter = require('./routes/Subject')
 app.use('/subject', subjectRouter)
 const gradeRouter = require('./routes/Grade')
 app.use('/grade', gradeRouter)
+const authRouter = require('./routes/Auth')
+app.use('/auth', authRouter)
 
 const db = require('./models')
 db.sequelize.sync().then(() => {
