@@ -1,4 +1,4 @@
-const { Teacher } = require('../models')
+const { Teacher, Student } = require('../models')
 const bcrypt = require('bcrypt')
 
 module.exports = {
@@ -6,8 +6,9 @@ module.exports = {
     addTeacher: async (req, res) => {
         const teacher = req.body
 
-        const studentFind = Student.findAll({ where: { email: student.email } })
-        if (studentFind != null) res.json({ error: "Użytkownik o tym emailu już istnieje" })
+        const studentFind = await Student.findAll({ where: { email: teacher.email } })
+        const teacherFind = await Teacher.findAll({ where: { email: teacher.email } })
+        if (teacherFind.length != 0 || studentFind.length != 0) res.json({ error: "Użytkownik o tym emailu już istnieje" })
         else {
             teacher.isAdmin = false
             teacher.StatusId = 1
