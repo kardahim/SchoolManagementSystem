@@ -1,5 +1,6 @@
 const { Teacher, Student } = require('../models')
 const bcrypt = require('bcrypt')
+const Op = require('sequelize').Op
 
 module.exports = {
     // add teacher
@@ -37,12 +38,16 @@ module.exports = {
     updateTeacher: async (req, res) => {
         const id = req.params.id
         const newTeacher = req.body
-        try {
-            await Teacher.update(newTeacher, { where: { id: id } })
-            res.json(newTeacher)
-        }
-        catch (error) {
-            res.json(error)
+
+        const studentFind = await Student.findAll({ where: { email: newTeacher.email, id: { [Op.ne]: id } } })
+        const teacherFind = await Teacher.findAll({ where: { email: newTeacher.email, id: { [Op.ne]: id } } })
+        if (teacherFind.length != 0 || studentFind.length != 0) res.json({ error: "Użytkownik o tym emailu już istnieje" })
+        else {
+            bcrypt.hash(newTeacher.password, 10).then((hash) => {
+                newTeacher.password = hash
+                Teacher.update(newTeacher, { where: { id: id } })
+            })
+            res.json("updated")
         }
     },
 
