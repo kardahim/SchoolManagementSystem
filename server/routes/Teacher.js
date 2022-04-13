@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('../controllers/TeacherController')
+// TODO: apply middleware
+// const { validateToken } = require('../middlewares/AuthMiddleware')
 
 // add teacher
 router.post('/', controller.addTeacher)

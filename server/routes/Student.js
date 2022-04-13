@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('../controllers/StudentController')
+// const { validateToken } = require('../middlewares/AuthMiddleware')
 
 // add student
 router.post('/', controller.addStudent)

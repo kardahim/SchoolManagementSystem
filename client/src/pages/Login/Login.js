@@ -26,6 +26,8 @@ function Login() {
                 setLoginError(response.data.error)
             }
             else {
+                console.log(response.data.error)
+                localStorage.setItem('accessToken', response.data)
                 navigate('/')
             }
         })
@@ -49,6 +51,7 @@ function Login() {
                             <Field
                                 name='email'
                                 className='login-input'
+                                // FIXME: onchange doesnt work, errorMessage should disappear
                                 placeholder='Email' />
                         </div>
                         <div>
