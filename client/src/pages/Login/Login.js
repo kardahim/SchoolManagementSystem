@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup'
 import './Login.scss'
+import axios from 'axios'
 
 function Login() {
+    const navigate = useNavigate()
+    const [loginError, setLoginError] = useState('')
+
     const initialValues = {
         email: '',
         password: ''
@@ -17,8 +22,14 @@ function Login() {
     })
 
     const onSubmit = (data) => {
-        // TODO: pin to server
-        console.log(data)
+        axios.post('http://localhost:3001/auth/login', data).then((response) => {
+            if (response.data.error) {
+                setLoginError(response.data.error)
+            }
+            else {
+                navigate('/')
+            }
+        })
     }
 
     return (
@@ -35,6 +46,7 @@ function Login() {
                         </div>
                         <div>
                             <ErrorMessage name='email' component='span' />
+                            <span>{loginError}</span>
                             <Field
                                 name='email'
                                 className='login-input'
