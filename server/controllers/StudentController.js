@@ -47,7 +47,7 @@ module.exports = {
                 newStudent.password = hash
                 Student.update(newStudent, { where: { id: id } })
             })
-            res.json(newStudent)
+            res.json("updated")
         }
     },
 
