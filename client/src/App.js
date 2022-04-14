@@ -10,6 +10,7 @@ import axios from 'axios'
 function App() {
   const [authState, setAuthState] = useState(false)
 
+  // check that token is valid
   useEffect(() => {
     axios
       .get('http://localhost:3001/auth/check/token', {
@@ -27,6 +28,13 @@ function App() {
       })
   }, [])
 
+
+  // logout function
+  const logout = () => {
+    localStorage.removeItem('accessToken')
+    setAuthState(false)
+  }
+
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
@@ -41,7 +49,7 @@ function App() {
               <Link to="/login">Zaloguj się</Link>
             )}
             {authState && (
-              <Link to="/logout">Wyloguj się</Link>
+              <Link to='/' onClick={logout}>Wyloguj się</Link>
             )}
             <Link to="/add/user">Dodaj nowego użytkownika</Link>
             <Link to="#">Empty</Link>
