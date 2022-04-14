@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const { sign } = require('jsonwebtoken')
 
 module.exports = {
+    // login
     login: async (req, res) => {
         const { email, password } = req.body
         const teacher = await Teacher.findOne({ where: { email: email } })
@@ -29,5 +30,10 @@ module.exports = {
                 })
             }
         }
+    },
+
+    // check correct token
+    checkToken: (req, res) => {
+        res.json(req.user)
     }
 }

@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { useNavigate } from "react-router-dom";
 import * as Yup from 'yup'
 import './Login.scss'
 import axios from 'axios'
+import { AuthContext } from '../../helpers/AuthContext'
 
 function Login() {
     const navigate = useNavigate()
     const [loginError, setLoginError] = useState('')
+    const { setAuthState } = useContext(AuthContext)
 
     const initialValues = {
         email: '',
@@ -26,8 +28,8 @@ function Login() {
                 setLoginError(response.data.error)
             }
             else {
-                console.log(response.data.error)
                 localStorage.setItem('accessToken', response.data)
+                setAuthState(true)
                 navigate('/')
             }
         })
