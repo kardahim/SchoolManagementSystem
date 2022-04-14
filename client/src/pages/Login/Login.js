@@ -28,8 +28,14 @@ function Login() {
                 setLoginError(response.data.error)
             }
             else {
-                localStorage.setItem('accessToken', response.data)
-                setAuthState(true)
+                localStorage.setItem('accessToken', response.data.token)
+                setAuthState({
+                    email: response.data.email,
+                    id: response.data.id,
+                    isAdmin: response.data.isAdmin,
+                    isTeacher: response.data.isTeacher,
+                    status: true
+                })
                 navigate('/')
             }
         })
@@ -51,6 +57,7 @@ function Login() {
                             <ErrorMessage name='email' component='span' />
                             <span>{loginError}</span>
                             <Field
+                                autoComplete='username'
                                 name='email'
                                 className='login-input'
                                 // FIXME: onchange doesnt work, errorMessage should disappear
@@ -59,6 +66,7 @@ function Login() {
                         <div>
                             <ErrorMessage name='password' component='span' />
                             <Field
+                                autoComplete='current-password'
                                 name='password'
                                 type='password'
                                 className='login-input'

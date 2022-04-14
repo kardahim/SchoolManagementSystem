@@ -8,7 +8,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
-  const [authState, setAuthState] = useState(false)
+  const [authState, setAuthState] = useState({
+    email: '',
+    id: 0,
+    isAdmin: false,
+    isTeacher: false,
+    status: false
+  })
 
   // check that token is valid
   useEffect(() => {
@@ -20,10 +26,16 @@ function App() {
       })
       .then((response) => {
         if (response.data.error) {
-          setAuthState(false)
+          setAuthState({ ...authState, status: false })
         }
         else {
-          setAuthState(true)
+          setAuthState({
+            email: response.data.email,
+            id: response.data.id,
+            isAdmin: response.data.isAdmin,
+            isTeacher: response.data.isTeacher,
+            status: true
+          })
         }
       })
   }, [])
@@ -32,7 +44,7 @@ function App() {
   // logout function
   const logout = () => {
     localStorage.removeItem('accessToken')
-    setAuthState(false)
+    setAuthState({ ...authState, status: false })
   }
 
   return (
@@ -45,23 +57,24 @@ function App() {
               &nbsp;
               Główna
             </Link>
-            {!authState && (
+            {!authState.status && (
               <Link to="/login">Zaloguj się</Link>
             )}
-            {authState && (
+            {authState.status && (
               <Link to='/' onClick={logout}>Wyloguj się</Link>
             )}
-            <Link to="/add/user">Dodaj nowego użytkownika</Link>
+            {authState.isAdmin && (
+              <Link to="/add/user">Dodaj nowego użytkownika</Link>
+            )}
             <Link to="#">Empty</Link>
             <Link to="#">Empty</Link>
           </nav>
           <main>
             <div className='background'></div>
+            {/* TODO: add linking auth system */}
             <Routes>
               <Route path="/" element={<Home />} />
-              {!authState && (
-                <Route path="/login" element={<Login />} />
-              )}
+              <Route path="/login" element={<Login />} />
               <Route path="/add/user" element={<AddNewUser />} />
             </Routes>
           </main>
