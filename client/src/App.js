@@ -1,13 +1,15 @@
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom'
 import './App.scss'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import AddNewUser from './pages/AddNewUser/AddNewUser'
+import TeacherList from './pages/TeacherList/TeacherList'
 import { AuthContext } from './helpers/AuthContext'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
+
   const [authState, setAuthState] = useState({
     email: '',
     id: 0,
@@ -15,6 +17,9 @@ function App() {
     isTeacher: false,
     status: false
   })
+
+  const [isLoading, setIsLoading] = useState(true)
+  console.log(authState)
 
   // check that token is valid
   useEffect(() => {
@@ -27,6 +32,7 @@ function App() {
       .then((response) => {
         if (response.data.error) {
           setAuthState({ ...authState, status: false })
+          setIsLoading(false)
         }
         else {
           setAuthState({
@@ -36,15 +42,30 @@ function App() {
             isTeacher: response.data.isTeacher,
             status: true
           })
+          setIsLoading(false)
         }
       })
   }, [])
-
 
   // logout function
   const logout = () => {
     localStorage.removeItem('accessToken')
     setAuthState({ ...authState, status: false })
+  }
+
+  function LoggedRoute({ children }) {
+    const auth = authState.status
+    return auth ? children : <Navigate to='/login' />
+  }
+
+  function TeacherRoute({ children }) {
+    const auth = authState.isTeacher
+    return auth ? children : <Navigate to='/login' />
+  }
+
+  function AdminRoute({ children }) {
+    const auth = authState.isAdmin
+    return auth ? children : <Navigate to='/login' />
   }
 
   return (
@@ -73,9 +94,14 @@ function App() {
             <div className='background'></div>
             {/* TODO: add linking auth system */}
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/add/user" element={<AddNewUser />} />
+              {(!isLoading &&
+                <>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/add/user" element={<AddNewUser />} />
+                  <Route path="/teacher/list" element={<TeacherList />} />
+                  <Route path="/" element={<LoggedRoute><Home /></LoggedRoute>} />
+                </>
+              )}
             </Routes>
           </main>
           <footer>
