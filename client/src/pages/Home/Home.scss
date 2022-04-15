@@ -7,6 +7,8 @@ $icon-color: #666564;
 $card-header-height: 70px;
 $card-header-font-size: 22px;
 $card-content-font-size: 20px;
+$card-height: 600px;
+$card-width: 500px;
 
 
 .home-container {
@@ -15,10 +17,16 @@ $card-content-font-size: 20px;
     width: 100%;
 
     .card {
-        min-height: 600px;
-        min-width: 500px;
+        min-height: $card-height;
+        min-width: $card-width;
         background-color: $card-background-color;
         box-shadow: 0px 0px 10px $card-shadow-color;
+
+        &:hover {
+            cursor: pointer;
+            transition: 0.5s;
+            transform: scale(1.05)
+        }
 
         .card-header {
             height: $card-header-height;

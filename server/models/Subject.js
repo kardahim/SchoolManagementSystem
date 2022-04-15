@@ -3,8 +3,7 @@ module.exports = (sequelize, DataTypes) => {
         // TODO: add validate
         name: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         }
     })
 

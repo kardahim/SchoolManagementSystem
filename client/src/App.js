@@ -92,7 +92,6 @@ function App() {
           </nav>
           <main>
             <div className='background'></div>
-            {/* TODO: add linking auth system */}
             <Routes>
               {(!isLoading &&
                 <>

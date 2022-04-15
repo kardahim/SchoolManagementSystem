@@ -8,16 +8,6 @@ import axios from 'axios'
 function Home() {
     const { authState, setAuthState } = useContext(AuthContext)
 
-    // const navigate = useNavigate()
-    // const { authState, setAuthState } = useContext(AuthContext)
-    // useEffect(() => {
-    //     if (!authState.status) {
-    //         console.log(authState)
-    //         navigate('/login')
-    //     }
-    // }, [])
-
-    // FIXME: work only with link, url redirect to login (even if user is logged)
     if (authState.isAdmin) {
         return (
             <Admin />

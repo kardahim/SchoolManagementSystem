@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function AdminHome() {
+    const navigate = useNavigate()
+
     const [students, setStudents] = useState([])
     const [teachers, setTeachers] = useState([])
     const [subjects, setSubjects] = useState([])
@@ -65,9 +68,10 @@ function AdminHome() {
 
 
     }, [])
+
     return (
         <div className='home-container'>
-            <div className='card'>
+            <div className='card' onClick={() => navigate('/teacher/list')}>
                 <div className='card-header'>
                     nauczyciele
                 </div>
