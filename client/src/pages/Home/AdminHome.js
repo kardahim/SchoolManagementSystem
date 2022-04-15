@@ -31,7 +31,9 @@ function AdminHome() {
         // get all subjects
         axios
             .get('http://localhost:3001/subject').then((response) => {
-                setSubjects(response.data)
+                setSubjects(Array.from(new Set((response.data).map(item => item.name))))
+
+                console.log(subjects)
             })
 
         // get all classes
@@ -90,7 +92,7 @@ function AdminHome() {
                     </div>
                 </div>
             </div>
-            <div className='card'>
+            <div className='card' onClick={() => navigate('/student/list')}>
                 <div className='card-header'>
                     uczniowie
                 </div>

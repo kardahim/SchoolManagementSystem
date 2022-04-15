@@ -4,6 +4,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import AddNewUser from './pages/AddNewUser/AddNewUser'
 import TeacherList from './pages/TeacherList/TeacherList'
+import StudentList from './pages/StudentList/StudentList'
 import { AuthContext } from './helpers/AuthContext'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -98,6 +99,7 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/add/user" element={<AddNewUser />} />
                   <Route path="/teacher/list" element={<TeacherList />} />
+                  <Route path="/student/list" element={<StudentList />} />
                   <Route path="/" element={<LoggedRoute><Home /></LoggedRoute>} />
                 </>
               )}
