@@ -2,19 +2,18 @@ import React, { useEffect, useContext } from 'react'
 import './AddNewUser.scss'
 import Teacher from './TeacherForm'
 import Student from './StudentForm'
-import TeacherForm from './TeacherForm'
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from '../../helpers/AuthContext'
 
 function AddNewUser() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const { authState, setAuthState } = useContext(AuthContext)
 
-    useEffect(() => {
-        if (!authState.isAdmin) {
-            navigate('/login')
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (!authState.isAdmin) {
+    //         navigate('/login')
+    //     }
+    // }, [])
 
     if (sessionStorage.getItem('user') === 'student') {
         return (

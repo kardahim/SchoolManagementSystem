@@ -12,6 +12,9 @@ router.get('/', controller.getAllStudents)
 // // get student by id
 router.get('/:id', controller.getStudentById)
 
+// // get student by StatusId
+router.get('/status/:id', controller.getStudentByStatusId)
+
 // // update student
 router.put('/:id', controller.updateStudent)
 

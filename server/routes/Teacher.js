@@ -13,6 +13,9 @@ router.get('/', controller.getAllTeachers)
 // // get teacher by id
 router.get('/:id', controller.getTeacherById)
 
+// // get teacher by StatusId
+router.get('/status/:id', controller.getTeacherByStatusId)
+
 // // update teacher
 router.put('/:id', controller.updateTeacher)
 

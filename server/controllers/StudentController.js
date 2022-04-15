@@ -34,6 +34,13 @@ module.exports = {
         res.json(student)
     },
 
+    // get teacher by StatusId
+    getStudentByStatusId: async (req, res) => {
+        const id = req.params.id
+        const student = await Student.findAll({ where: { StatusId: id } })
+        res.json(student)
+    },
+
     // update student
     updateStudent: async (req, res) => {
         const id = req.params.id

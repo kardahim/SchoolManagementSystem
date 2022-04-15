@@ -2,20 +2,25 @@ import React, { useContext, useEffect } from 'react'
 import { useNavigate } from "react-router-dom"
 import './Home.scss'
 import { AuthContext } from '../../helpers/AuthContext'
+import Admin from './AdminHome'
+import axios from 'axios'
 
 function Home() {
-    const navigate = useNavigate()
     const { authState, setAuthState } = useContext(AuthContext)
 
-    useEffect(() => {
-        if (!authState.status) {
-            navigate('/login')
-        }
-    }, [])
+    // const navigate = useNavigate()
+    // const { authState, setAuthState } = useContext(AuthContext)
+    // useEffect(() => {
+    //     if (!authState.status) {
+    //         console.log(authState)
+    //         navigate('/login')
+    //     }
+    // }, [])
 
+    // FIXME: work only with link, url redirect to login (even if user is logged)
     if (authState.isAdmin) {
         return (
-            <div>test dyrektora</div>
+            <Admin />
         )
     }
     else if (authState.isTeacher) {
@@ -24,7 +29,9 @@ function Home() {
         )
     }
     else if (authState.status) {
-        <div>test ucznia</div>
+        return (
+            <div>test ucznia</div>
+        )
     }
 }
 
