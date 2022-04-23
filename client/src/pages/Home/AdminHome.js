@@ -110,7 +110,7 @@ function AdminHome() {
                     </div>
                 </div>
             </div>
-            <div className='card'>
+            <div className='card' onClick={() => navigate('/class/list')}>
                 <div className='card-header'>
                     klasy
                 </div>

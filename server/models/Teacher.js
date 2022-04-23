@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
         Teacher.hasMany(tables.Grade, {
             onDelete: 'cascade'
         })
+
+        Teacher.hasOne(tables.Class, {
+            onDelete: 'cascade'
+        })
     }
 
     return Teacher
