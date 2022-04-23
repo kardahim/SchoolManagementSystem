@@ -25,12 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     })
 
     Teacher.associate = (tables) => {
-        Teacher.hasMany(tables.Class, {
+        Teacher.hasMany(tables.Grade, {
             onDelete: 'cascade'
-        }),
-            Teacher.hasMany(tables.Subject, {
-                onDelete: 'cascade'
-            })
+        })
     }
 
     return Teacher

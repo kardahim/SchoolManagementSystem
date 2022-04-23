@@ -3,12 +3,13 @@ module.exports = (sequelize, DataTypes) => {
         // TODO: add validate
         name: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
         }
     })
 
     Subject.associate = (tables) => {
-        Subject.hasMany(tables.Grade, {
+        Subject.hasMany(tables.Teacher, {
             onDelete: 'cascade'
         })
     }
