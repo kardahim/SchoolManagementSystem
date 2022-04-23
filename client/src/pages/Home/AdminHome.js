@@ -31,9 +31,8 @@ function AdminHome() {
         // get all subjects
         axios
             .get('http://localhost:3001/subject').then((response) => {
-                setSubjects(Array.from(new Set((response.data).map(item => item.name))))
-
-                console.log(subjects)
+                // setSubjects(Array.from(new Set((response.data).map(item => item.name))))
+                setSubjects(response.data)
             })
 
         // get all classes

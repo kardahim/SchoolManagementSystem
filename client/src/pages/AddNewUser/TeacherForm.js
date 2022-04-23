@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import axios from 'axios'
 
 function TeacherForm() {
+    const [subjects, setSubjects] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/subject').then((response) => {
+            setSubjects(response.data)
+        })
+    }, [])
+
     const initialValues = {
         first_name: '',
         last_name: '',
         email: '',
-        password: ''
+        password: '',
+        SubjectId: 1
     }
     const [emailError, setEmailError] = useState('')
 
@@ -84,6 +93,18 @@ function TeacherForm() {
                                 type='password'
                                 className='form-input'
                                 placeholder='Hasło' />
+                        </div>
+                        <div>
+                            <ErrorMessage name='SubjectId' component='span' />
+                            <Field
+                                as='select'
+                                name='SubjectId'
+                                className='form-input'>
+                                {subjects.map((value, key) => {
+                                    return (
+                                        <option value={value.id}>{value.name}</option>)
+                                })}
+                            </Field>
                         </div>
                         <div>
                             <button type='submit'>dodaj</button>
