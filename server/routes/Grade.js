@@ -11,6 +11,9 @@ router.get('/', controller.getAllGrades)
 // get grade by id
 router.get('/:id', controller.getGradeById)
 
+// get grade by student id
+router.get('/student/:id', controller.getGradeByStudentId)
+
 // update grade
 router.put('/:id', controller.updateGrade)
 

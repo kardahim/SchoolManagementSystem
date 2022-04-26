@@ -34,13 +34,14 @@ module.exports = {
         res.json(student)
     },
 
-    // get teacher by StatusId
+    // get student by StatusId
     getStudentByStatusId: async (req, res) => {
         const id = req.params.id
         const student = await Student.findAll({ where: { StatusId: id } })
         res.json(student)
     },
 
+    // FIXME: always change password, need correct password for work
     // update student
     updateStudent: async (req, res) => {
         const id = req.params.id

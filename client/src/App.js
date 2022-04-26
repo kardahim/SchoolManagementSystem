@@ -21,7 +21,6 @@ function App() {
   })
 
   const [isLoading, setIsLoading] = useState(true)
-  console.log(authState)
 
   // check that token is valid
   useEffect(() => {

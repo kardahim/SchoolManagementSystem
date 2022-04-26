@@ -11,5 +11,11 @@ module.exports = (sequelize, DataTypes) => {
         }
     })
 
+    Grade.associate = (tables) => {
+        Grade.belongsTo(tables.Teacher, {
+            onDelete: 'cascade'
+        })
+    }
+
     return Grade
 }

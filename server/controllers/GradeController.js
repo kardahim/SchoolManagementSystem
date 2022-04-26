@@ -1,4 +1,4 @@
-const { Grade } = require('../models')
+const { Grade, Teacher } = require('../models')
 
 module.exports = {
     // add grade
@@ -23,6 +23,13 @@ module.exports = {
     getGradeById: async (req, res) => {
         const id = req.params.id
         const grade = await Grade.findByPk(id)
+        res.json(grade)
+    },
+
+    // get grade by studentId
+    getGradeByStudentId: async (req, res) => {
+        const id = req.params.id
+        const grade = await Grade.findAll({ include: Teacher, where: { StudentId: id } })
         res.json(grade)
     },
 

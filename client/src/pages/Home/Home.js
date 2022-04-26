@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import './Home.scss'
 import { AuthContext } from '../../helpers/AuthContext'
 import Admin from './AdminHome'
+import Student from './StudentHome'
 import axios from 'axios'
 
 function Home() {
@@ -20,7 +21,7 @@ function Home() {
     }
     else if (authState.status) {
         return (
-            <div>test ucznia</div>
+            <Student />
         )
     }
 }
