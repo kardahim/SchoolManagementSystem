@@ -3,6 +3,7 @@ import './App.scss'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import AddNewUser from './pages/AddNewUser/AddNewUser'
+import AddNewGrade from './pages/AddNewGrade/AddNewGrade'
 import TeacherList from './pages/TeacherList/TeacherList'
 import StudentList from './pages/StudentList/StudentList'
 import ClassList from './pages/ClassList/ClassList'
@@ -85,7 +86,7 @@ function App() {
             {authState.status && (
               <Link to='/' onClick={logout}>Wyloguj się</Link>
             )}
-            {authState.isAdmin && (
+            {authState.isAdmin && authState.status && (
               <Link to="/add/user">Dodaj nowego użytkownika</Link>
             )}
             <Link to="#">Empty</Link>
@@ -96,8 +97,10 @@ function App() {
             <Routes>
               {(!isLoading &&
                 <>
+                  {/* TODO: block url like / */}
                   <Route path="/login" element={<Login />} />
                   <Route path="/add/user" element={<AddNewUser />} />
+                  <Route path="/add/grade" element={<AddNewGrade />} />
                   <Route path="/teacher/list" element={<TeacherList />} />
                   <Route path="/student/list" element={<StudentList />} />
                   <Route path="/class/list" element={<ClassList />} />

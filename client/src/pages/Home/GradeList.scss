@@ -38,5 +38,11 @@ $list-row-font-size: 22px;
             justify-content: center;
             align-items: center;
         }
+
+        .student-row:hover {
+            cursor: pointer;
+            background-color: $list-accent-color;
+            transition: 0.3s;
+        }
     }
 }

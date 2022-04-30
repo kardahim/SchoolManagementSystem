@@ -1,13 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-import { useNavigate } from "react-router-dom"
+import React, { useContext } from 'react'
 import './Home.scss'
 import { AuthContext } from '../../helpers/AuthContext'
 import Admin from './AdminHome'
 import Student from './StudentHome'
-import axios from 'axios'
+import Teacher from './TeacherHome'
 
 function Home() {
-    const { authState, setAuthState } = useContext(AuthContext)
+    const { authState } = useContext(AuthContext)
 
     if (authState.isAdmin) {
         return (
@@ -16,7 +15,7 @@ function Home() {
     }
     else if (authState.isTeacher) {
         return (
-            <div>test nauczyciela</div>
+            <Teacher />
         )
     }
     else if (authState.status) {
