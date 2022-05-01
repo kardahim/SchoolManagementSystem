@@ -7,6 +7,7 @@ import AddNewGrade from './pages/AddNewGrade/AddNewGrade'
 import TeacherList from './pages/TeacherList/TeacherList'
 import StudentList from './pages/StudentList/StudentList'
 import ClassList from './pages/ClassList/ClassList'
+import TeacherHome from './pages/Home/TeacherHome'
 import { AuthContext } from './helpers/AuthContext'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -87,10 +88,11 @@ function App() {
               <Link to='/' onClick={logout}>Wyloguj się</Link>
             )}
             {authState.isAdmin && authState.status && (
-              <Link to="/add/user">Dodaj nowego użytkownika</Link>
+              <>
+                <Link to="/add/user">Dodaj nowego użytkownika</Link>
+                <Link to="/principal/add/grade">Dodaj ocenę</Link>
+              </>
             )}
-            <Link to="#">Empty</Link>
-            <Link to="#">Empty</Link>
           </nav>
           <main>
             <div className='background'></div>
@@ -104,6 +106,7 @@ function App() {
                   <Route path="/teacher/list" element={<TeacherList />} />
                   <Route path="/student/list" element={<StudentList />} />
                   <Route path="/class/list" element={<ClassList />} />
+                  <Route path="/principal/add/grade" element={<TeacherHome />} />
                   <Route path="/" element={<LoggedRoute><Home /></LoggedRoute>} />
                 </>
               )}
