@@ -41,22 +41,13 @@ module.exports = {
         res.json(student)
     },
 
-    // FIXME: always change password, need correct password for work
     // update student
     updateStudent: async (req, res) => {
         const id = req.params.id
-        const newStudent = req.body
+        const status = req.body.status
 
-        const studentFind = await Student.findAll({ where: { email: newStudent.email, id: { [Op.ne]: id } } })
-        const teacherFind = await Teacher.findAll({ where: { email: newStudent.email, id: { [Op.ne]: id } } })
-        if (teacherFind.length != 0 || studentFind.length != 0) res.json({ error: "Użytkownik o tym emailu już istnieje" })
-        else {
-            bcrypt.hash(newStudent.password, 10).then((hash) => {
-                newStudent.password = hash
-                Student.update(newStudent, { where: { id: id } })
-            })
-            res.json("updated")
-        }
+        Student.update({ StatusId: status }, { where: { id: id } })
+        res.json("updated")
     },
 
     //delete student

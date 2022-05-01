@@ -6,6 +6,8 @@ function TeacherList() {
     const [teacherFirstStatus, setTeacherFirstStatus] = useState([])
     const [teacherSecondStatus, setTeacherSecondStatus] = useState([])
     const [subjects, setSubjects] = useState([])
+    // this is a bad solution but it's works
+    const [isChange, setIsChange] = useState(false)
 
     useEffect(() => {
         axios
@@ -22,7 +24,19 @@ function TeacherList() {
             .get('http://localhost:3001/subject').then((response) => {
                 setSubjects(response.data)
             })
-    }, [])
+    }, [isChange])
+
+    function changeStatus(id, status) {
+        let data
+        if (status == 1) data = 2
+        else if (status == 2) data = 1
+
+        setIsChange(false)
+        axios.put(`http://localhost:3001/teacher/${id}`, { status: data })
+            .then((response) => {
+                setIsChange(true)
+            })
+    }
 
     return (
         <div className='list-container'>
@@ -38,6 +52,7 @@ function TeacherList() {
                                 if (value.id === v.TeacherId)
                                     return <div>{v.name}</div>
                             })}
+                            <i className="fa-solid fa-user icon" title='Zmień status' onClick={() => changeStatus(value.id, 1)}></i>
                         </div>
                     )
                 })}
@@ -52,6 +67,7 @@ function TeacherList() {
                                 if (value.id === v.TeacherId)
                                     return <div>{v.name}</div>
                             })}
+                            <i className="fa-solid fa-user-graduate icon" title='Zmień status' onClick={() => changeStatus(value.id, 2)}></i>
                         </div>
                     )
                 })}

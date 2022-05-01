@@ -77,6 +77,7 @@ function App() {
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
+          {/* TODO: add hamburger menu */}
           <nav>
             <Link to="/">
               <i className="fa-solid fa-house"></i>
