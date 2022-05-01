@@ -31,7 +31,7 @@ function TeacherHome() {
                         <div>
                             <div className="list-header" key={key}>{value.name}</div>
                             {students.map((v, k) => {
-                                if (value.id == v.ClassId) {
+                                if (value.id == v.ClassId && v.StatusId == 1) {
                                     return (
                                         <div className='list-row student-row' key={k} onClick={() => navigate('/add/grade', { state: { studentId: v.id, studentName: `${v.first_name} ${v.last_name}` } })}>
                                             {v.first_name} • {v.last_name} • {v.email}

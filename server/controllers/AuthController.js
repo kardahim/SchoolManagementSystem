@@ -15,8 +15,8 @@ module.exports = {
                 bcrypt.compare(password, teacher.password).then((match) => {
                     if (!match) res.json({ error: "Złe hasło lub email" })
                     else {
-                        const accessToken = sign({ email: teacher.email, id: teacher.id, isAdmin: teacher.isAdmin, isTeacher: true }, 'importantsecret')
-                        res.json({ token: accessToken, email: teacher.email, id: teacher.id, isAdmin: teacher.isAdmin, isTeacher: true })
+                        const accessToken = sign({ email: teacher.email, id: teacher.id, isAdmin: teacher.isAdmin, isTeacher: true, name: teacher.first_name }, 'importantsecret')
+                        res.json({ token: accessToken, email: teacher.email, id: teacher.id, isAdmin: teacher.isAdmin, isTeacher: true, name: teacher.first_name })
                     }
                 })
             }
@@ -24,8 +24,8 @@ module.exports = {
                 bcrypt.compare(password, student.password).then((match) => {
                     if (!match) res.json({ error: "Złe hasło lub email" })
                     else {
-                        const accessToken = sign({ email: student.email, id: student.id, isAdmin: false, isTeacher: false }, 'importantsecret')
-                        res.json({ token: accessToken, email: student.email, id: student.id, isAdmin: false, isTeacher: false })
+                        const accessToken = sign({ email: student.email, id: student.id, isAdmin: false, isTeacher: false, name: student.first_name }, 'importantsecret')
+                        res.json({ token: accessToken, email: student.email, id: student.id, isAdmin: false, isTeacher: false, name: student.first_name })
                     }
                 })
             }

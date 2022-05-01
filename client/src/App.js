@@ -19,6 +19,7 @@ function App() {
     id: 0,
     isAdmin: false,
     isTeacher: false,
+    name: '',
     status: false
   })
 
@@ -43,6 +44,7 @@ function App() {
             id: response.data.id,
             isAdmin: response.data.isAdmin,
             isTeacher: response.data.isTeacher,
+            name: response.data.name,
             status: true
           })
           setIsLoading(false)
@@ -92,6 +94,9 @@ function App() {
                 <Link to="/add/user">Dodaj nowego użytkownika</Link>
                 <Link to="/principal/add/grade">Dodaj ocenę</Link>
               </>
+            )}
+            {(authState.status && !isLoading &&
+              <span>Witaj {authState.name}</span>
             )}
           </nav>
           <main>

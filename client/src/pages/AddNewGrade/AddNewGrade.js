@@ -46,7 +46,7 @@ function AddNewGrade() {
                                 className='grade-input'>
                                 {marks.map((value, key) => {
                                     return (
-                                        <option value={value}>{value}</option>
+                                        <option value={value} key={key}>{value}</option>
                                     )
                                 })}
                             </Field>

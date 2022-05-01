@@ -34,7 +34,8 @@ function Login() {
                     id: response.data.id,
                     isAdmin: response.data.isAdmin,
                     isTeacher: response.data.isTeacher,
-                    status: true
+                    name: response.data.name,
+                    status: true,
                 })
                 navigate('/')
             }
