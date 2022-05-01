@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Subject = sequelize.define("Subject", {
-        // TODO: add validate
         name: {
             type: DataTypes.STRING,
             allowNull: false,

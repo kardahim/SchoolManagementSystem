@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Student = sequelize.define("Student", {
-        // TODO: add validate
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,

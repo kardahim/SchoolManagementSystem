@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     const Status = sequelize.define("Status", {
-        // TODO: add validate
         name: {
             type: DataTypes.STRING,
             allowNull: false,
