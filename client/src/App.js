@@ -65,12 +65,12 @@ function App() {
 
   function TeacherRoute({ children }) {
     const auth = authState.isTeacher
-    return auth ? children : <Navigate to='/login' />
+    return auth ? children : <Navigate to='/' />
   }
 
   function AdminRoute({ children }) {
     const auth = authState.isAdmin
-    return auth ? children : <Navigate to='/login' />
+    return auth ? children : <Navigate to='/' />
   }
 
   return (
@@ -104,15 +104,17 @@ function App() {
             <Routes>
               {(!isLoading &&
                 <>
-                  {/* TODO: block url like / */}
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/add/user" element={<AddNewUser />} />
-                  <Route path="/add/grade" element={<AddNewGrade />} />
-                  <Route path="/teacher/list" element={<TeacherList />} />
-                  <Route path="/student/list" element={<StudentList />} />
-                  <Route path="/class/list" element={<ClassList />} />
-                  <Route path="/principal/add/grade" element={<TeacherHome />} />
+                  {/* all users routes */}
                   <Route path="/" element={<LoggedRoute><Home /></LoggedRoute>} />
+                  <Route path="/login" element={<Login />} />
+                  {/* teacher routes */}
+                  <Route path="/add/grade" element={<TeacherRoute><AddNewGrade /></TeacherRoute>} />
+                  {/* admin routes */}
+                  <Route path="/teacher/list" element={<AdminRoute><TeacherList /></AdminRoute>} />
+                  <Route path="/student/list" element={<AdminRoute><StudentList /></AdminRoute>} />
+                  <Route path="/class/list" element={<AdminRoute><ClassList /></AdminRoute>} />
+                  <Route path="/principal/add/grade" element={<AdminRoute><TeacherHome /></AdminRoute>} />
+                  <Route path="/add/user" element={<AdminRoute><AddNewUser /></AdminRoute>} />
                 </>
               )}
             </Routes>
