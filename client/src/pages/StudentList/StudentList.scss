@@ -12,7 +12,19 @@ $list-row-background: white;
 $list-row-height: 60px;
 $list-row-font-size: 22px;
 
-.list-container {
+@mixin icon-1k {
+    @media(max-width: 1125px) {
+        @content;
+    }
+}
+
+@mixin icon-8h {
+    @media(max-width: 800px) {
+        @content;
+    }
+}
+
+.list-container-student {
     min-height: $list-container-height;
     min-width: $list-container-width;
 
@@ -45,8 +57,16 @@ $list-row-font-size: 22px;
             color: $icon-color;
             margin-left: 5%;
             font-size: larger;
+            left: 60%;
             position: absolute;
-            right: 30%;
+
+            @include icon-1k {
+                left: 70%;
+            }
+
+            @include icon-8h {
+                left: 80%;
+            }
         }
 
         .icon:hover {

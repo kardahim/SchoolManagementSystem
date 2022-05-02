@@ -39,7 +39,7 @@ function TeacherList() {
     }
 
     return (
-        <div className='list-container'>
+        <div className='list-container-student'>
             <div className='list-content'>
                 <div className="list-header">Aktywni</div>
                 {studentFirstStatus.map((value, key) => {

@@ -39,14 +39,14 @@ function TeacherList() {
     }
 
     return (
-        <div className='list-container'>
+        <div className='list-container-teacher'>
             <div className='list-content'>
                 <div className="list-header">Aktywni</div>
                 {teacherFirstStatus.map((value, key) => {
                     return (
                         <div className='list-row' key={key}>
                             {value.first_name} • {value.last_name}
-                            • {value.email} • {value.isAdmin ? 'Administrator' : 'Nauczyciel'} •
+                            • {value.email} • {value.isAdmin ? 'Administrator' : 'Nauczyciel'}
 
                             {subjects.map((v, k) => {
                                 if (value.id === v.TeacherId)
@@ -61,7 +61,7 @@ function TeacherList() {
                     return (
                         <div className='list-row' key={key}>
                             {value.first_name} • {value.last_name}
-                            • {value.email} • {value.isAdmin ? 'Administrator' : 'Nauczyciel'} •
+                            • {value.email} • {value.isAdmin ? 'Administrator' : 'Nauczyciel'}
 
                             {subjects.map((v, k) => {
                                 if (value.id === v.TeacherId)

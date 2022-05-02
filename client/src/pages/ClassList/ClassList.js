@@ -19,7 +19,7 @@ function TeacherList() {
     }, [])
 
     return (
-        <div className='list-container'>
+        <div className='list-container-class'>
             <div className='list-content'>
                 <div className="list-header">Klasy</div>
                 {classes.map((value, key) => {
