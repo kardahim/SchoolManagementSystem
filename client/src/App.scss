@@ -71,6 +71,7 @@ nav {
 
     .hamburger {
         display: none;
+        width: auto;
 
         @include tablet {
             display: block;
