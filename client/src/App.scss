@@ -12,9 +12,14 @@ $footer-content-height: 50px;
 $footer-padding: 12px;
 $footer-font-size: 16px;
 
-
 // main
 $main-padding: 50px;
+
+@mixin tablet {
+    @media(max-width: 890px) {
+        @content
+    }
+}
 
 * {
     padding: 0;
@@ -35,7 +40,7 @@ nav {
         text-decoration: none;
         padding: $navigation-padding;
 
-        &:first-child {
+        &:nth-child(2) {
             font-weight: bold;
             margin-left: 10%;
         }
@@ -43,6 +48,10 @@ nav {
         &:hover {
             border-bottom: 1px solid $navigation-content-color;
             border-radius: 1px;
+        }
+
+        @include tablet {
+            display: none;
         }
     }
 
@@ -52,6 +61,58 @@ nav {
         font-family: Arial, Helvetica, sans-serif;
         padding: $navigation-padding;
         margin: auto 10% auto auto;
+
+        @include tablet {
+            position: absolute;
+            right: 0;
+            top: 12px;
+        }
+    }
+
+    .hamburger {
+        display: none;
+
+        @include tablet {
+            display: block;
+            margin-left: 10%;
+        }
+    }
+}
+
+
+.responsive {
+    @include tablet {
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    a {
+        @include tablet {
+            display: block;
+            background-color: $navigation-background-color;
+            margin-left: 10%;
+            width: 50%;
+
+            &:nth-child(2) {
+                margin-top: 10px;
+            }
+
+            &:not(.hamburger):hover {
+                background: #2E85EF;
+                border: 1px solid $navigation-content-color;
+            }
+
+            &:hover {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .hamburger {
+        @include tablet {
+            padding-top: 25px;
+        }
     }
 }
 

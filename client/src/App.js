@@ -73,12 +73,26 @@ function App() {
     return auth ? children : <Navigate to='/' />
   }
 
+  function menu() {
+    let x = document.getElementById('menu')
+
+    if (x.className === 'nav') {
+      x.className += ' responsive'
+    }
+    else {
+      x.className = 'nav'
+    }
+  }
+
   return (
     <div className="App">
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <Router>
           {/* TODO: add hamburger menu */}
-          <nav>
+          <nav id="menu" className='nav'>
+            <a href='javascript:void(0);' className='hamburger' onClick={() => menu()}>
+              <i className='fa fa-bars'></i>
+            </a>
             <Link to="/">
               <i className="fa-solid fa-house"></i>
               &nbsp;
