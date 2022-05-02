@@ -11,10 +11,27 @@ $card-height: 600px;
 $card-width: 500px;
 
 
+@mixin flex-container {
+    @media(max-width: 1540px) {
+        @content;
+    }
+}
+
+@mixin no-transform {
+    @media(max-width: 800px) {
+        @content;
+    }
+}
+
 .home-container {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+
+    @include flex-container {
+        flex-direction: column;
+        width: calc(1.5 * #{$card-width});
+    }
 
     .card {
         min-height: $card-height;
@@ -25,7 +42,11 @@ $card-width: 500px;
         &:hover {
             cursor: pointer;
             transition: 0.5s;
-            transform: scale(1.05)
+            transform: scale(1.05);
+
+            @include no-transform {
+                transform: none;
+            }
         }
 
         .card-header {
@@ -59,6 +80,12 @@ $card-width: 500px;
             .card-content {
                 font-size: $card-content-font-size;
             }
+        }
+    }
+
+    .card:nth-child(2) {
+        @include flex-container {
+            margin: 50px 0;
         }
     }
 }

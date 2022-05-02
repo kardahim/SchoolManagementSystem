@@ -17,7 +17,7 @@ $main-padding: 50px;
 
 @mixin tablet {
     @media(max-width: 890px) {
-        @content
+        @content;
     }
 }
 
